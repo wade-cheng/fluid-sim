@@ -1,1 +1,73 @@
-temp
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <h1>15-418 Final Project: Fluid Simulation</h1>
+    <p>
+      By Wade Cheng, Liam Walker. Project webpage URL at
+      <a href="https://wade-cheng.github.io/fluid-sim"
+        >https://wade-cheng.github.io/fluid-sim</a
+      >.
+    </p>
+    <h2>Summary</h2>
+    <p>
+      We plan on implementing a parallel particle fluid simulation on the CPU.
+    </p>
+    <h2>Challenge</h2>
+    <p>
+      Fluid particles might act on any other fluid particle, which is too many
+      interactions to be efficient.
+    </p>
+    <h2>Starting resources</h2>
+    <p>
+      We will start the code from scratch. Still need to review the literature
+      and find references to work from.
+    </p>
+    <h2>Goals</h2>
+    <h3>Plan to achieve</h3>
+    <ul>
+      <li>
+        A parallel fluid simulation and analysis of why we were able to get the
+        speedup we did. The speedup analysis could look at problem-constrained
+        scaling, or also time-constrained scaling to see how we can push for
+        more particles while maintaining a set framerate.
+      </li>
+    </ul>
+    <h3>Extra goals</h3>
+    <ul>
+      <li>
+        live demo of the particle simulation (route the parallel fluid
+        simulation into some renderer)
+      </li>
+    </ul>
+    <h2>Platform choice</h2>
+    <p>
+      CPU architecture lends it more tolerance for complicated, branching code.
+      This can let us find and implement interesting structures that give
+      ability to parallelize more.
+    </p>
+    <p>
+      As a less important point, if we have a live demo, it would be easier
+      because neither of us have CUDA-compatible hardware; rendering a scene out
+      of the Gates cluster would be unideal.
+    </p>
+    <h2>Schedule</h2>
+    <h3>Week of Nov 15</h3>
+    <ul>
+      <li>Work on minimal sequential implementation</li>
+    </ul>
+    <h3>Week of Nov 22</h3>
+    <ul>
+      <li>Project Milestone Report (due Monday, Nov 23rd)</li>
+      <li>Parallelize, find data structures to use.</li>
+    </ul>
+    <h3>Week of Nov 29</h3>
+    <h3>Week of Dec 6</h3>
+    <ul>
+      <li>Final Project Report (due Thursday, Dec 10th, 11:59pm)</li>
+    </ul>
+  </body>
+</html>
