@@ -14,18 +14,63 @@
     </p>
     <h2>Summary</h2>
     <p>
-      We plan on implementing a parallel particle fluid simulation on the CPU.
+      We plan on implementing a smoothed-particle hydrodynamics parallel fluid
+      simulation. We will compare how the algorithms we implement derive
+      performance on the CPU (testing on our Macbooks) compared to on the GPU
+      (using the Gates clusters).
     </p>
     <h2>Challenge</h2>
     <p>
       Fluid particles might act on any other fluid particle, which is too many
       interactions to be efficient.
     </p>
+    <p>
+      Every time step, metadata for every particle needs to be updated. Also,
+      particles are only affected by neighbors up to a chosen radius. These two
+      together mean memory locality can be tricky to obtain. The operation
+      doesn’t seem very compute-heavy so our machines may be memory-bound on
+      this workload, and we will have to code around this.
+    </p>
+    <p>
+      Computations between two particles are symmetric by design, so
+      theoretically only half the number of accesses are necessary here.
+    </p>
     <h2>Starting resources</h2>
     <p>
-      We will start the code from scratch. Still need to review the literature
-      and find references to work from.
+      We will start the code from scratch. We have some references to start
+      with:
     </p>
+    <ul>
+      <li>
+        <p>
+          Math:
+          <a
+            href="https://www.researchgate.net/publication/231514052_Particle-Based_Fluid_Simulation_for_Interactive_Applications"
+            >Particle-Based Fluid Simulation for Interactive Applications</a
+          >, Müller et al.
+        </p>
+        <ul>
+          <li>
+            2D kernel formulas:
+            <a href="https://doi.org/10.2312/PE/vriphys/vriphys11/039-046"
+              >SPH Based Shallow Water Simulation</a
+            >, Solenthaler et al.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Implementation guide:
+        <a href="https://lucasschuermann.com/writing/implementing-sph-in-2d"
+          >Implementing SPH in 2D, Schuermann</a
+        >
+      </li>
+      <li>
+        Some optimization ideas:
+        <a href="https://doi.org/10.1111/j.1467-8659.2010.01832.x"
+          >A Parallel SPH Implementation on Multi-Core CPUs</a
+        >, Ihmsen et al.
+      </li>
+    </ul>
     <h2>Goals</h2>
     <h3>Plan to achieve</h3>
     <ul>
@@ -45,14 +90,15 @@
     </ul>
     <h2>Platform choice</h2>
     <p>
-      CPU architecture lends it more tolerance for complicated, branching code.
-      This can let us find and implement interesting structures that give
-      ability to parallelize more.
+      CPU architecture is less affected by complicated, branching code. This can
+      let us find and implement interesting structures that give ability to
+      parallelize more. In constrast, GPU architecture has higher memory
+      bandwidth and threads that may lead to different solutions for computing
+      the same problem efficiently.
     </p>
     <p>
-      As a less important point, if we have a live demo, it would be easier
-      because neither of us have CUDA-compatible hardware; rendering a scene out
-      of the Gates cluster would be unideal.
+      For specific platforms, we will investigate our Apple silicon CPUs as well
+      as Gates cluster GPUs.
     </p>
     <h2>Schedule</h2>
     <h3>Week of Nov 15</h3>
